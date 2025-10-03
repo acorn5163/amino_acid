@@ -1,8 +1,8 @@
 
-  var Hints = {"syouyakumei":true,"kigen":true,"sihyouseibun":true,"gakumei":true,"kamoku":true,"bui":true,"kounou":true};
-  var type_of_answer = "syouyakumei"
-  const ToA = {"syouyakumei":"生薬名","kigen":"基原","sihyouseibun":"指標成分","gakumei":"学名","kamoku":"科目","bui":"部位","kounou":"効能"};
-  var number_of_Q = 10
+  var Hints = {"name":true,"3letter":true,"char":true,"feature":true,"essential":true,"phosphorylation":true,"chirality":true};
+  var type_of_answer = "name"
+  const ToA = {"name":"名称","3letter":"三文字","char":"一文字","feature":"性質","essential":"必須","phosphorylation":"リン酸化","chirality":"不斉炭素数"};
+  var number_of_Q = 20
   var modedict = {"type":"answercontainer","choose":"choosecontainer"}
   var importance = false
   mode = "choose"
@@ -85,17 +85,8 @@ function Step2(){
     }
 }
 function MakeList(){
-  var Qlist = {}
-  for(key in Range_of_question){
-    if(Range_of_question[key] == true){
-      Object.assign(Qlist,data[key])
-    } 
-  }
-  for(key in Qlist){
-    if(Qlist[key]["importance"] != "Y"){
-      delete Qlist[key]
-    }
-  }
+  var Qlist = data
+
   console.log("Qlist:",Qlist)
   console.log("length:",Object.keys(Qlist).length)
   return Qlist
@@ -103,13 +94,13 @@ function MakeList(){
 
 function SetQuestion(Qdata){
   console.log(Qdata);
-  document.getElementById("C_syouyakumei").textContent = Qdata["syouyakumei"];
-  document.getElementById("C_kigen").textContent = Qdata["kigen"];
-  document.getElementById("C_gakumei").textContent = Qdata["gakumei"];
-  document.getElementById("C_kamoku").textContent = Qdata["kamoku"];
-  document.getElementById("C_bui").textContent = Qdata["bui"];
-  document.getElementById("C_sihyouseibun").textContent = Qdata["sihyouseibun"];
-  document.getElementById("C_kounou").textContent = Qdata["kounou"];
+  document.getElementById("C_name").textContent = Qdata["name"];
+  document.getElementById("C_3letter").textContent = Qdata["3letter"];
+  document.getElementById("C_feature").textContent = Qdata["feature"];
+  document.getElementById("C_essential").textContent = Qdata["essential"];
+  document.getElementById("C_phosphorylation").textContent = Qdata["phosphorylation"];
+  document.getElementById("C_char").textContent = Qdata["char"];
+  document.getElementById("C_chirality").textContent = Qdata["chirality"];
   if(mode=="type"){
     document.getElementById("C_answer").textContent = Qdata["Answer"];
   }
@@ -139,9 +130,10 @@ function MakeQuestion(number){
     
     if(mode == "type"){
       console.log("type question");
+      RawQuestionList_depletable = RawQuestionList;
       for(let i=0;i < N_o_Q ;i++){
-        var T_number = Math.floor(Math.random()*Object.keys(RawQuestionList).length);
-        var Q_rawdata = RawQuestionList[Object.keys(RawQuestionList)[T_number]];
+        var T_number = Math.floor(Math.random()*Object.keys(RawQuestionList_depletable).length);
+        var Q_rawdata = RawQuestionList_depletable[Object.keys(RawQuestionList_depletable)[T_number]];
         var Q_data = {};
         console.log("Q_rawdata:",Q_rawdata)
         for(key in Q_rawdata){
@@ -154,13 +146,17 @@ function MakeQuestion(number){
         }
         Q_data["Answer"] = Q_rawdata[type_of_answer];
         QuestionList.push(Q_data);
-        delete RawQuestionList[Object.keys(RawQuestionList)[T_number]];
+        delete RawQuestionList_depletable[Object.keys(RawQuestionList_depletable)[T_number]];
+        if(Object.keys(RawQuestionList_depletable).length === 0){
+          RawQuestionList_depletable = RawQuestionList;
+        }
       }
     }
     else if(mode == "choose"){
+      RawQuestionList_depletable = RawQuestionList;
       for(let i=0;i < N_o_Q;i++){
-        var T_number = Math.floor(Math.random()*Object.keys(RawQuestionList).length);
-        var Q_rawdata = RawQuestionList[Object.keys(RawQuestionList)[T_number]];
+        var T_number = Math.floor(Math.random()*Object.keys(RawQuestionList_depletable).length);
+        var Q_rawdata = RawQuestionList_depletable[Object.keys(RawQuestionList_depletable)[T_number]];
         var Q_data = {};
         console.log("Q_rawdata:",Q_rawdata)
         for(key in Q_rawdata){
@@ -174,8 +170,8 @@ function MakeQuestion(number){
         Q_data["Answer"] = Q_rawdata[type_of_answer];
         var trueanswer_number = Math.floor(Math.random()*3);
         var fakes = []
-        for(key in RawQuestionList){
-          fakes.push(RawQuestionList[key][type_of_answer]);
+        for(key in RawQuestionList_depletable){
+          fakes.push(RawQuestionList_depletable[key][type_of_answer]);
         }
         fakes = Array.from(new Set(fakes));
         fakes = fakes.filter(element => !(element == Q_rawdata[type_of_answer]));
@@ -198,7 +194,10 @@ function MakeQuestion(number){
           Q_data["choose2"] = fakes[Math.floor(Math.random()*fakes.length)];
         }
         QuestionList.push(Q_data);
-        delete RawQuestionList[Object.keys(RawQuestionList)[T_number]];
+        delete RawQuestionList_depletable[Object.keys(RawQuestionList_depletable)[T_number]];
+        if(Object.keys(RawQuestionList_depletable).length === 0){
+          RawQuestionList_depletable = RawQuestionList;
+        }
         }
       }
     console.log("Question:",QuestionList)
