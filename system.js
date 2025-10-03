@@ -1,4 +1,4 @@
-  var Range_of_question = {"ne":true,"konkei":true,"ha":true,"kawa":true,"kazitu":true,"syusi":true,"other":true};
+
   var Hints = {"syouyakumei":true,"kigen":true,"sihyouseibun":true,"gakumei":true,"kamoku":true,"bui":true,"kounou":true};
   var type_of_answer = "syouyakumei"
   const ToA = {"syouyakumei":"生薬名","kigen":"基原","sihyouseibun":"指標成分","gakumei":"学名","kamoku":"科目","bui":"部位","kounou":"効能"};
@@ -23,10 +23,6 @@ fetch('data.json')
   });
 
 //   console.log(data["ne"]["ウコン"]);
-  function ChangeRange(target){
-    Range_of_question[target] = !Range_of_question[target];
-    console.log(Range_of_question);
-  }
 
   function ChangeHint(target){
     Hints[target] = !Hints[target];
@@ -38,19 +34,9 @@ fetch('data.json')
     console.log(type_of_answer);
   }
 
-  function SetNumberofQ(target){
-    number_of_Q = target;
-    console.log(number_of_Q);
-  }
-
   function SetMode(target){
     mode = target;
     console.log(mode);
-  }
-
-  function SwitchImportance(){
-    importance = !importance;
-    console.log("importance:",importance)
   }
 
   function StartGame(){

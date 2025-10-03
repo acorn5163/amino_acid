@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="jp">
 <head>
   <title>Bootstrap 5 Example</title>
   <meta charset="utf-8">
@@ -10,29 +10,10 @@
 <body>
 
 <div id="config">
-    <div class="container-fluid p-4 bg-primary text-white text-center">
-    <h1>生薬学知識テスト</h1>
+  <div class="container-fluid p-4 bg-primary text-white text-center">
+    <h1>アミノ酸テスト</h1>
   </div>
     
-  <div class="container-fluid p-4 bg-outline-primary text-blue text-center">
-    <h1>1.範囲選択</h1>
-    <div class="btn-group">
-      <input type="checkbox" class="btn-check" id="ne" autocomplete="off" checked>
-      <label class="btn btn-outline-primary" for = "ne" onclick="ChangeRange('ne')">根</label><br>
-      <input type="checkbox" class="btn-check" id="konkei" autocomplete="off" checked>
-      <label class="btn btn-outline-primary" for = "konkei" onclick="ChangeRange('konkei')">根茎</label><br>
-      <input type="checkbox" class="btn-check" id="ha" autocomplete="off" checked>
-      <label class="btn btn-outline-primary" for = "ha" onclick="ChangeRange('ha')">葉</label><br>
-      <input type="checkbox" class="btn-check" id="kazitu" autocomplete="off" checked>
-      <label class="btn btn-outline-primary" for = "kazitu" onclick="ChangeRange('kazitu')">果実</label><br>
-      <input type="checkbox" class="btn-check" id="syusi" autocomplete="off" checked>
-      <label class="btn btn-outline-primary" for = "syusi" onclick="ChangeRange('syusi')">種子</label><br>
-      <input type="checkbox" class="btn-check" id="kawa" autocomplete="off" checked>
-      <label class="btn btn-outline-primary" for = "kawa" onclick="ChangeRange('kawa')">皮</label><br>
-      <input type="checkbox" class="btn-check" id="other" autocomplete="off" checked>
-      <label class="btn btn-outline-primary" for = "other" onclick="ChangeRange('other')">その他</label><br>
-    </div>
-  </div>
 
   <div class="container-fluid p-4 bg-outline-primary text-blue text-center">
     <h1>2.ヒント</h1>
@@ -71,20 +52,6 @@
       <label class="btn btn-outline-primary" for = "A_kamoku" onclick="ChangeTarget('kamoku')">科目</label>
       <input type="radio" class="btn-check" id="A_kounou" autocomplete="off" name = "type_of_answer">
       <label class="btn btn-outline-primary" for = "A_kounou" onclick="ChangeTarget('kounou')">効能</label>
-    </div>
-  </div>
-
-  <div class="container-fluid p-4 bg-outline-primary text-blue text-center">
-    <h1>4.問題数</h1>
-    <div class="btn-group">
-      <input type="radio" class="btn-check" id="N_5" autocomplete="off" name = "number_of_Q">
-      <label class="btn btn-outline-primary" for = "N_5" onclick="SetNumberofQ('5')" checked>5</label> 
-      <input type="radio" class="btn-check" id="N_10" autocomplete="off" name = "number_of_Q" checked>
-      <label class="btn btn-outline-primary" for = "N_10" onclick="SetNumberofQ('10')">10</label>
-      <input type="radio" class="btn-check" id="N_20" autocomplete="off" name = "number_of_Q">
-      <label class="btn btn-outline-primary" for = "N_20" onclick="SetNumberofQ('20')">20</label>
-      <input type="radio" class="btn-check" id="N_1000" autocomplete="off" name = "number_of_Q">
-      <label class="btn btn-outline-primary" for = "N_1000" onclick="SetNumberofQ('1000')">すべて</label>
     </div>
   </div>
 
