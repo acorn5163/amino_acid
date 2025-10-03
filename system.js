@@ -195,10 +195,10 @@ function MakeQuestion(number){
         }
         QuestionList.push(Q_data);
         delete RawQuestionList_depletable[Object.keys(RawQuestionList_depletable)[T_number]];
-        if(Object.keys(RawQuestionList_depletable).length === 3){
+        if(Object.keys(RawQuestionList_depletable).length == 3){
           RawQuestionList_depletable = RawQuestionList;
         }
-        console.log(Object.keys(RawQuestionList_depletable).length);
+        console.log(typeof Object.keys(RawQuestionList_depletable).length);
         }
       }
     console.log("Question:",QuestionList)
