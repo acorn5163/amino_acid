@@ -153,7 +153,8 @@ function MakeQuestion(number){
       }
     }
     else if(mode == "choose"){
-      RawQuestionList_depletable = RawQuestionList;
+      RawQuestionList_depletable = {};
+      Object.assign(RawQuestionList_depletable,RawQuestionList);
       for(let i=0;i < N_o_Q;i++){
         var T_number = Math.floor(Math.random()*Object.keys(RawQuestionList_depletable).length);
         var Q_rawdata = RawQuestionList_depletable[Object.keys(RawQuestionList_depletable)[T_number]];
@@ -196,7 +197,7 @@ function MakeQuestion(number){
         QuestionList.push(Q_data);
         delete RawQuestionList_depletable[Object.keys(RawQuestionList_depletable)[T_number]];
         if(Object.keys(RawQuestionList_depletable).length == 3){
-          RawQuestionList_depletable = RawQuestionList;
+          Object.assign(RawQuestionList_depletable,RawQuestionList);
           console.log("aaaaaaaaaaaaaaaaaa");
         }
         console.log(typeof Object.keys(RawQuestionList_depletable).length);
