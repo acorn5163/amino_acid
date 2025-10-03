@@ -198,6 +198,7 @@ function MakeQuestion(number){
         if(Object.keys(RawQuestionList_depletable).length <=3){
           RawQuestionList_depletable = RawQuestionList;
         }
+        console.log(Object.keys(RawQuestionList_depletable).length);
         }
       }
     console.log("Question:",QuestionList)
