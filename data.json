@@ -74,7 +74,7 @@
     "3letter":"Asn",
     "char":"N",
     "essential":"No",
-    "feature":"塩基性",
+    "feature":"アミド",
     "phosphorylation":"No",
     "chirality":1,
     "precursor":"None"
@@ -84,7 +84,7 @@
     "3letter":"Gln",
     "char":"Q",
     "essential":"No",
-    "feature":"塩基性",
+    "feature":"アミド",
     "phosphorylation":"No",
     "chirality":1,
     "precursor":"None"
